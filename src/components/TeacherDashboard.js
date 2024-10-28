@@ -10,7 +10,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-const API_URL = process.env.REACT_APP_API_URL || "http://localhost:8080";
+const API_URL = process.env.REACT_APP_API_URL || "http://13.125.153.61:8081";
 
 const TeacherDashboard = () => {
   const [units, setUnits] = useState([]);
@@ -24,7 +24,12 @@ const TeacherDashboard = () => {
     const fetchUnits = async () => {
       try {
         console.log("Fetching from:", `${API_URL}/api/units`); // API URL 로깅
-        const response = await fetch(`${API_URL}/api/units`);
+        const response = await fetch(`${API_URL}/api/units`, {
+          credentials: "same-origin",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -49,7 +54,13 @@ const TeacherDashboard = () => {
     setIsLoading(true);
     try {
       const response = await fetch(
-        `${API_URL}/api/progress/dashboard/${selectedUnit}`
+        `${API_URL}/api/progress/dashboard/${selectedUnit}`,
+        {
+          credentials: "same-origin",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
       );
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
