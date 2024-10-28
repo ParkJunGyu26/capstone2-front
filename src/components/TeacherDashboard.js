@@ -26,9 +26,9 @@ const TeacherDashboard = () => {
         console.log("Fetching from:", `${API_URL}/api/units`); // API URL 로깅
         const response = await fetch(`${API_URL}/api/units`, {
           mode: "cors",
-          credentials: "include",
           headers: {
             "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "https://parkjungyu26.github.io",
           },
         });
         if (!response.ok) {
@@ -58,9 +58,9 @@ const TeacherDashboard = () => {
         `${API_URL}/api/progress/dashboard/${selectedUnit}`,
         {
           mode: "cors",
-          credentials: "include",
           headers: {
             "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "https://parkjungyu26.github.io",
           },
         }
       );
