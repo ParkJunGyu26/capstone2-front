@@ -25,7 +25,8 @@ const TeacherDashboard = () => {
       try {
         console.log("Fetching from:", `${API_URL}/api/units`); // API URL 로깅
         const response = await fetch(`${API_URL}/api/units`, {
-          credentials: "same-origin",
+          mode: "cors",
+          credentials: "include",
           headers: {
             "Content-Type": "application/json",
           },
@@ -56,7 +57,8 @@ const TeacherDashboard = () => {
       const response = await fetch(
         `${API_URL}/api/progress/dashboard/${selectedUnit}`,
         {
-          credentials: "same-origin",
+          mode: "cors",
+          credentials: "include",
           headers: {
             "Content-Type": "application/json",
           },
