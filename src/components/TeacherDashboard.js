@@ -10,7 +10,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-const API_URL = process.env.REACT_APP_API_URL;
+const API_URL = process.env.REACT_APP_API_URL || "https://13.125.153.61:8081";
 
 const TeacherDashboard = () => {
   const [units, setUnits] = useState([]);
@@ -21,9 +21,10 @@ const TeacherDashboard = () => {
 
   // 유닛 목록 가져오기
   useEffect(() => {
+    console.log("Current API_URL:", API_URL);
     const fetchUnits = async () => {
       try {
-        console.log("Fetching from:", `${API_URL}/api/units`); // API URL 로깅
+        console.log("Fetching from:", `${API_URL}/api/units`);
         const response = await fetch(`${API_URL}/api/units`, {
           mode: "cors",
           headers: {
