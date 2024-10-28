@@ -23,6 +23,7 @@ const TeacherDashboard = () => {
   useEffect(() => {
     const fetchUnits = async () => {
       try {
+        console.log("Fetching from:", `${API_URL}/api/units`); // API URL 로깅
         const response = await fetch(`${API_URL}/api/units`);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
@@ -34,7 +35,7 @@ const TeacherDashboard = () => {
         }
       } catch (error) {
         console.error("Error fetching units:", error);
-        setError("유닛 정보를 불러오는데 실패했습니다.");
+        setError(`유닛 정보를 불러오는데 실패했습니다. (${error.message})`);
       }
     };
 
