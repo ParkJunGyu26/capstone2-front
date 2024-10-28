@@ -10,7 +10,10 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-const API_URL = process.env.REACT_APP_API_URL || "https://13.125.153.61:8081";
+const API_URL =
+  process.env.NODE_ENV === "development"
+    ? "http://13.125.153.61:8080" // EC2의 도커 포트
+    : "http://13.125.153.61:8080"; // 프로덕션 환경도 동일
 
 const TeacherDashboard = () => {
   const [units, setUnits] = useState([]);
