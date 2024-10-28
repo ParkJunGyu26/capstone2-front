@@ -10,7 +10,10 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-const API_URL = process.env.REACT_APP_API_URL;
+const API_URL =
+  process.env.REACT_APP_API_URL || process.env.NODE_ENV === "development"
+    ? "http://localhost:8080"
+    : "https://13.125.153.61:8081";
 
 const TeacherDashboard = () => {
   const [units, setUnits] = useState([]);
@@ -28,7 +31,6 @@ const TeacherDashboard = () => {
           mode: "cors",
           headers: {
             "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "https://parkjungyu26.github.io",
           },
         });
         if (!response.ok) {
@@ -60,7 +62,6 @@ const TeacherDashboard = () => {
           mode: "cors",
           headers: {
             "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "https://parkjungyu26.github.io",
           },
         }
       );
